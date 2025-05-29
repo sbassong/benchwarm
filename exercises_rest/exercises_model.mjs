@@ -1,5 +1,5 @@
 /**
- * Add your first name and last name.
+ * Name: Samuel Bassong Bassong
  */
 import mongoose from 'mongoose';
 import 'dotenv/config';
