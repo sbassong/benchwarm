@@ -79,8 +79,8 @@ app.post(
 app.get(
     "/exercises",
     asyncHandler(async (req, res) => {
-        const exercises = await exercises.getExercises();
-        res.status(200).json(exercises);
+        const foundExercises = await exercises.getExercises();
+        res.status(200).json(foundExercises);
     })
 );
 
