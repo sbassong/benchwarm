@@ -1,4 +1,5 @@
 import DeleteButton from "./DeleteButton";
+import ToEditButton from "./ToEditButton";
 
 function ExerciseRow({ exerciseData, setExercises }) {
   return (
@@ -8,7 +9,10 @@ function ExerciseRow({ exerciseData, setExercises }) {
       <td>{exerciseData.weight}</td>
       <td>{exerciseData.unit}</td>
       <td>{exerciseData.date}</td>
-      <DeleteButton id={exerciseData._id} setExercises={setExercises}/>
+      <td>
+        <DeleteButton id={exerciseData._id} setExercises={setExercises}/>
+        <ToEditButton id={exerciseData._id}/>
+      </td>
     </tr>
   );
 }

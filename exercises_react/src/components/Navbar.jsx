@@ -17,7 +17,7 @@ function Navbar() {
         <Link className="nav-link" to="/">
           Home
         </Link>
-        <Link className="nav-link" to="/exercise/create">
+        <Link className="nav-link" to="/create">
           New exercise
         </Link>
       </div>
