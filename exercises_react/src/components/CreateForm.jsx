@@ -34,8 +34,8 @@ function CreateForm() {
   return (
     <div className="form-container">
       <form className="create-form" onSubmit={handleSubmit}>
+        <legend className="form-legend">Create a new exercise</legend>
         <fieldset className="form-fieldset">
-          <legend className="form-legend">Create a new exercise</legend>
           <label className="form-label">
             What's the exercise?
             <input
@@ -49,7 +49,7 @@ function CreateForm() {
           </label>
           <br />
           <label className="form-label">
-            Enter the number of reps
+            Number of reps
             <input
               className="form-input"
               type="number"
@@ -59,7 +59,8 @@ function CreateForm() {
               required
             />
           </label>
-          <br />
+        </fieldset>
+        <fieldset className="form-fieldset">
           <label className="form-label">
             Enter your weight
             <input
@@ -73,7 +74,7 @@ function CreateForm() {
           </label>
           <br />
           <label>
-            Weight unit
+            Unit
             <select
               className="form-input"
               name="unit"
@@ -86,7 +87,8 @@ function CreateForm() {
               <option value="kgs">Kgs</option>
             </select>
           </label>
-          <br />
+        </fieldset>
+        <fieldset className="form-fieldset">
           <label className="form-label">
             Today's date
             <input

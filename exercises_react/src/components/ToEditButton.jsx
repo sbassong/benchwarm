@@ -1,19 +1,14 @@
 import { MdEdit } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
 
-function ToEditButton({ id }) {
-  const navigate = useNavigate()
-
+function ToEditButton({goEditExercise, exerciseData}) {
   return (
-    <td className="toEdit-button-container-cell">
-      <div className="toEdit-button-cell">
-        <MdEdit
-          className="toEdit-exercise-button"
-          onClick={() => navigate(`/${id}/edit`)}
-          role="button"
-        />
-      </div>
-    </td>
+    <div className="toEdit-button-cell">
+      <MdEdit
+        className="toEdit-exercise-button"
+        role="button"
+        onClick={() => goEditExercise(exerciseData)}
+      />
+    </div>
   );
 }
 

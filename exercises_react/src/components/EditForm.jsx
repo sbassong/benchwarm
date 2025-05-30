@@ -1,29 +1,18 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function EditForm() {
-  const { id } = useParams();
+function EditForm({ exerciseToEdit }) {
   const navigate = useNavigate();
 
-  const [name, setName] = useState("");
-  const [reps, setReps] = useState("");
-  const [weight, setWeight] = useState("");
-  const [unit, setUnit] = useState("");
-  const [date, setDate] = useState("");
-
-  const handleGetExercise = async () => {
-    const response = await fetch(`/exercises/${id}`);
-    const exercisesData = await response.json();
-    setName(exercisesData.name);
-    setReps(exercisesData.reps);
-    setWeight(exercisesData.weight);
-    setUnit(exercisesData.unit);
-    setDate(exercisesData.date);
-  };
+  const [name, setName] = useState(exerciseToEdit?.name);
+  const [reps, setReps] = useState(exerciseToEdit?.reps);
+  const [weight, setWeight] = useState(exerciseToEdit?.weight);
+  const [unit, setUnit] = useState(exerciseToEdit?.unit);
+  const [date, setDate] = useState(exerciseToEdit?.date);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`/exercises/${id}`, {
+    const response = await fetch(`/exercises/${exerciseToEdit._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -42,15 +31,11 @@ function EditForm() {
     navigate("/");
   };
 
-  useEffect(() => {
-    handleGetExercise();
-  }, []);
-
   return (
     <div className="form-container">
       <form className="edit-form" onSubmit={handleSubmit}>
+        <legend className="form-legend">Update an exercise</legend>
         <fieldset className="form-fieldset">
-          <legend className="form-legend">Update an exercise</legend>
           <label className="form-label">
             Name
             <input
@@ -74,7 +59,8 @@ function EditForm() {
               required
             />
           </label>
-          <br />
+        </fieldset>
+        <fieldset className="form-fieldset">
           <label className="form-label">
             Weight
             <input
@@ -88,7 +74,7 @@ function EditForm() {
           </label>
           <br />
           <label>
-            Weight unit
+            Unit
             <select
               className="form-input"
               name="unit"
@@ -97,15 +83,12 @@ function EditForm() {
               onChange={(e) => setUnit(e.target.value)}
               required
             >
-              <option value="lbs">
-                Lbs
-              </option>
-              <option value="kgs">
-                Kgs
-              </option>
+              <option value="lbs">Lbs</option>
+              <option value="kgs">Kgs</option>
             </select>
           </label>
-          <br />
+        </fieldset>
+        <fieldset className="form-fieldset">
           <label className="form-label">
             Date
             <input

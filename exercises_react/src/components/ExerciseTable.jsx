@@ -1,34 +1,9 @@
-import { Link } from "react-router-dom";
 import ExerciseRow from "./ExerciseRow";
-import { useEffect, useState } from "react";
 
-function ExerciseTable() {
-  const [exercises, setExercises] = useState([]);
-
-  const handleGetExercises = async () => {
-    // await api call response to get all exercises data
-    // setExercises(response)
-    const response = await fetch("/exercises");
-    const exercisesData = await response.json();
-    setExercises(exercisesData);
-  };
-
-  useEffect(() => {
-    handleGetExercises();
-  }, [exercises]);
-
-  return !exercises.length ? (
-    <div>
-      <h2>
-        No current exercises.{" "}
-        <Link className="nav-link" to="/create">
-          Start a new workout?
-        </Link>
-      </h2>
-    </div>
-  ) : (
+function ExerciseTable({ exercises, goEditExercise }) {
+  return (
     <table className="exercise-table">
-      <caption>All exercises:</caption>
+      <caption>All exercises</caption>
       <thead>
         <tr>
           <th>Name</th>
@@ -45,7 +20,7 @@ function ExerciseTable() {
             <ExerciseRow
               key={exercise._id}
               exerciseData={exercise}
-              setExercises={setExercises}
+              goEditExercise={goEditExercise}
             />
           ))}
       </tbody>

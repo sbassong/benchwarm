@@ -37,7 +37,6 @@ function isDateValid(date) {
  */
 function isValid(req) {
     const { name, reps, weight, unit, date } = req.body;
-
     if (!(name && reps && weight && unit && date)) return false;
 
     const nameIsValid = typeof name === "string" && name.length >= 1;
