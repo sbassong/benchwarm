@@ -34,7 +34,6 @@ function EditForm() {
         date,
       }),
     });
-    console.log(response)
     if (response.status === 200) {
       alert("Successfully updated the exercise!");
     } else {
@@ -94,7 +93,7 @@ function EditForm() {
               className="form-input"
               name="unit"
               type="text"
-              defaultValue={unit}
+              value={unit}
               onChange={(e) => setUnit(e.target.value)}
               required
             >

@@ -21,7 +21,7 @@ function ExerciseTable() {
     <div>
       <h2>
         No current exercises.{" "}
-        <Link className="nav-link" to="/exercises/create">
+        <Link className="nav-link" to="/create">
           Start a new workout?
         </Link>
       </h2>

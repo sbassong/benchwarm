@@ -2,21 +2,26 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function CreateForm() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [reps, setReps] = useState("");
   const [weight, setWeight] = useState("");
-  const [unit, setUnit] = useState("");
+  const [unit, setUnit] = useState("lbs");
   const [date, setDate] = useState("");
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch("/exercises", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, reps: parseInt(reps), weight: parseInt(weight), unit, date }),
+      body: JSON.stringify({
+        name,
+        reps: parseInt(reps),
+        weight: parseInt(weight),
+        unit,
+        date,
+      }),
     });
     if (response.status === 201) {
       alert("Successfully added the exercise!");
@@ -73,6 +78,7 @@ function CreateForm() {
               className="form-input"
               name="unit"
               onChange={(e) => setUnit(e.target.value)}
+              value={unit}
               type="text"
               required
             >
